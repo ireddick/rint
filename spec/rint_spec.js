@@ -25,9 +25,11 @@ RInt.prototype.pred = function() { return this.n - 1 }
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
-  it("returns an instance of rint for the given value", function() {
+
+  it("returns an instance of RInt for the given value", function() {
     expect(rint(7).toInt()).toEqual(7)
   })
+
 })
 
 describe("RInt", function() {
