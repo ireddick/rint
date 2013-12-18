@@ -18,6 +18,8 @@ RInt.prototype.downTo = function(end, fn) {
   for (var i = this.n; i >= end; i--) { fn(i) }
 }
 
+RInt.prototype.next = function() { return this.n + 1 }
+
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
@@ -117,6 +119,14 @@ describe("RInt", function() {
       rint(2).downTo(5, fn)
 
       expect(fn).not.toHaveBeenCalled()
+    })
+
+  })
+
+  describe("#next", function() {
+
+    it("returns n + 1", function() {
+      expect(rint(3).next()).toEqual(4)
     })
 
   })
