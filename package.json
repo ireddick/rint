@@ -1,0 +1,14 @@
+{
+  "name": "rint",
+  "description": "ruby Integer api silliness",
+  "version": "0.1.0-alpha",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ireddick/rint.git"
+  },
+  "readmeFilename": "readme.md",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-jasmine-node": "~0.1.0"
+  }
+}
