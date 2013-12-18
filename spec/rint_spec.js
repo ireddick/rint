@@ -22,12 +22,27 @@ RInt.prototype.next = function() { return this.n + 1 }
 
 RInt.prototype.pred = function() { return this.n - 1 }
 
-var rint = function(n) { return new RInt(n) }
+var rint = function(n) {
+  if (n % 1 !== 0) {
+    throw new TypeError("given value is not an integer")
+  }
+
+  return new RInt(n)
+}
 
 describe("rint", function() {
 
   it("returns an instance of RInt for the given value", function() {
     expect(rint(7).toInt()).toEqual(7)
+  })
+
+  it("throws a TypeError if the value is not an integer", function() {
+    var e = new TypeError("given value is not an integer")
+
+    expect(function() {rint(1.1)}).toThrow(e)
+    expect(function() {rint("error")}).toThrow(e)
+    expect(function() {rint(undefined)}).toThrow(e)
+    expect(function() {rint(NaN)}).toThrow(e)
   })
 
 })
