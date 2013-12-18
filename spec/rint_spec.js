@@ -14,6 +14,10 @@ RInt.prototype.upTo = function(end, fn) {
   for (var i = this.n; i <= end; i++) { fn(i) }
 }
 
+RInt.prototype.downTo = function(end, fn) {
+  for (var i = this.n; i >= end; i--) { fn(i) }
+}
+
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
@@ -93,6 +97,24 @@ describe("RInt", function() {
     it("does not call when the end value is less than n", function() {
       var fn = jasmine.createSpy("fn")
       rint(5).upTo(2, fn)
+
+      expect(fn).not.toHaveBeenCalled()
+    })
+
+  })
+
+  describe("#downTo", function() {
+
+    it("passes each value from the end value to n", function() {
+      var values = []
+      rint(5).downTo(2, function(n) { values.push(n) } )
+
+      expect(values).toEqual([5, 4, 3, 2])
+    })
+
+    it("does not call when the end value is greater than n", function() {
+      var fn = jasmine.createSpy("fn")
+      rint(2).downTo(5, fn)
 
       expect(fn).not.toHaveBeenCalled()
     })
