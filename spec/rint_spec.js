@@ -8,6 +8,8 @@ RInt.prototype.times = function(fn) {
 
 RInt.prototype.isEven = function() { return this.n % 2 === 0 }
 
+RInt.prototype.isOdd = function() { return this.n % 2 !== 0 }
+
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
@@ -61,6 +63,16 @@ describe("RInt", function() {
       expect(rint(0).isEven()).toBeTruthy();
       expect(rint(1).isEven()).toBeFalsy();
       expect(rint(2).isEven()).toBeTruthy();
+    })
+
+  })
+
+  describe("#isOdd", function() {
+
+    it("returns true when n is odd", function() {
+      expect(rint(0).isOdd()).toBeFalsy();
+      expect(rint(1).isOdd()).toBeTruthy();
+      expect(rint(2).isOdd()).toBeFalsy();
     })
 
   })
