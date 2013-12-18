@@ -1,9 +1,17 @@
+var times = function(n, fn) {
+  for (var i = 0; i < n; i++) { fn(i) }
+}
+
 var RInt = function(n) { this.n = n }
 
 RInt.prototype.toInt = function() { return this.n }
 
 RInt.prototype.times = function(fn) {
-  for (var i = 0; i < this.n; i++) { fn(i) }
+  if (fn) { times(this.n, fn) }
+  else {
+    var n = this.n
+    return function(fn) { times(n, fn) }
+  }
 }
 
 RInt.prototype.isEven = function() { return this.n % 2 === 0 }
@@ -80,6 +88,13 @@ describe("RInt", function() {
     it("passes each value from 0 to n-1", function() {
       var values = []
       rint(3).times(function(n) { values.push(n) })
+
+      expect(values).toEqual([0, 1, 2])
+    })
+
+    it("curries when no function is given", function() {
+      var values = []
+      rint(3).times()(function(n) { values.push(n) })
 
       expect(values).toEqual([0, 1, 2])
     })
