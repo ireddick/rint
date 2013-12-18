@@ -3,7 +3,11 @@ var times = function(n, fn) {
 }
 
 var range = function(start, end, fn) {
-  for (var i = start; i <= end; i++) { fn(i) }
+  if (start < end) {
+    for (var i = start; i <= end; i++) { fn(i) }
+  } else {
+    for (var i = start; i >= end; i--) { fn(i) }
+  }
 }
 
 var RInt = function(n) { this.n = n }
@@ -23,6 +27,7 @@ RInt.prototype.isEven = function() { return this.n % 2 === 0 }
 RInt.prototype.isOdd = function() { return this.n % 2 !== 0 }
 
 RInt.prototype.upTo = function(end, fn) {
+  if (end < this.n) { return }
   if (fn) { range(this.n, end, fn) }
   else {
     var start = this.n
@@ -32,7 +37,13 @@ RInt.prototype.upTo = function(end, fn) {
 }
 
 RInt.prototype.downTo = function(end, fn) {
-  for (var i = this.n; i >= end; i--) { fn(i) }
+  if (end > this.n) { return }
+  if (fn) { range(this.n, end, fn) }
+  else {
+    var start = this.n
+       ,end = end
+    return function(fn) { range(start, end, fn) }
+  }
 }
 
 RInt.prototype.next = function() { return this.n + 1 }
@@ -169,6 +180,13 @@ describe("RInt", function() {
       rint(2).downTo(5, fn)
 
       expect(fn).not.toHaveBeenCalled()
+    })
+
+    it("curries when no function is given", function() {
+      var values = []
+      rint(5).downTo(2)(function(n) { values.push(n) })
+
+      expect(values).toEqual([5, 4, 3, 2])
     })
 
   })
