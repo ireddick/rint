@@ -6,6 +6,8 @@ RInt.prototype.times = function(fn) {
   for (var i = 0; i < this.n; i++) { fn(i) }
 }
 
+RInt.prototype.isEven = function() { return this.n % 2 === 0 }
+
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
@@ -49,6 +51,16 @@ describe("RInt", function() {
       rint(3).times(function(n) { values.push(n) })
 
       expect(values).toEqual([0, 1, 2])
+    })
+
+  })
+
+  describe("#isEven", function() {
+
+    it("returns true when n is even", function() {
+      expect(rint(0).isEven()).toBeTruthy();
+      expect(rint(1).isEven()).toBeFalsy();
+      expect(rint(2).isEven()).toBeTruthy();
     })
 
   })
