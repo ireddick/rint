@@ -10,6 +10,10 @@ RInt.prototype.isEven = function() { return this.n % 2 === 0 }
 
 RInt.prototype.isOdd = function() { return this.n % 2 !== 0 }
 
+RInt.prototype.upTo = function(end, fn) {
+  for (var i = this.n; i <= end; i++) { fn(i) }
+}
+
 var rint = function(n) { return new RInt(n) }
 
 describe("rint", function() {
@@ -73,6 +77,24 @@ describe("RInt", function() {
       expect(rint(0).isOdd()).toBeFalsy();
       expect(rint(1).isOdd()).toBeTruthy();
       expect(rint(2).isOdd()).toBeFalsy();
+    })
+
+  })
+
+  describe("#upTo", function() {
+
+    it("passes each value from n to the end value", function() {
+      var values = []
+      rint(2).upTo(5, function(n) { values.push(n) })
+
+      expect(values).toEqual([2, 3, 4, 5])
+    })
+
+    it("does not call when the end value is less than n", function() {
+      var fn = jasmine.createSpy("fn")
+      rint(5).upTo(2, fn)
+
+      expect(fn).not.toHaveBeenCalled()
     })
 
   })
