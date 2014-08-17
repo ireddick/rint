@@ -30,14 +30,14 @@ describe("RInt", function() {
   describe("#times", function() {
 
     it("calls the given function n times", function() {
-      fn = jasmine.createSpy("fn")
+      var fn = jasmine.createSpy("fn")
       rint(3).times(fn)
 
       expect(fn.calls.length).toEqual(3)
     })
 
     it("does not call the given function when n is negative", function() {
-      fn = jasmine.createSpy("fn")
+      var fn = jasmine.createSpy("fn")
       rint(-3).times(fn)
 
       expect(fn).not.toHaveBeenCalled()
