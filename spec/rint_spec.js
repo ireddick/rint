@@ -27,6 +27,14 @@ describe("RInt", function() {
 
   })
 
+  describe("#valueOf", function() {
+
+    it('returns the wrapped value', function() {
+      expect(rint(9).valueOf()).toEqual(9)
+    })
+
+  })
+
   describe("#times", function() {
 
     it("calls the given function n times", function() {
