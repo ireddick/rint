@@ -7,7 +7,7 @@ describe("rint", function() {
     expect(rint(7).toInt()).toEqual(7)
   })
 
-  it("accepts an instance of rint as the value", function() {
+  it("accepts an instance of RInt as the value", function() {
     expect(rint(rint(3)).toInt()).toEqual(3);
   })
 
