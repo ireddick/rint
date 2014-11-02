@@ -70,9 +70,9 @@ describe("RInt", function() {
   describe("#isEven", function() {
 
     it("returns true when n is even", function() {
-      expect(rint(0).isEven()).toBeTruthy();
-      expect(rint(1).isEven()).toBeFalsy();
-      expect(rint(2).isEven()).toBeTruthy();
+      expect(rint(0).isEven()).toBeTruthy()
+      expect(rint(1).isEven()).toBeFalsy()
+      expect(rint(2).isEven()).toBeTruthy()
     })
 
   })
@@ -80,9 +80,9 @@ describe("RInt", function() {
   describe("#isOdd", function() {
 
     it("returns true when n is odd", function() {
-      expect(rint(0).isOdd()).toBeFalsy();
-      expect(rint(1).isOdd()).toBeTruthy();
-      expect(rint(2).isOdd()).toBeFalsy();
+      expect(rint(0).isOdd()).toBeFalsy()
+      expect(rint(1).isOdd()).toBeTruthy()
+      expect(rint(2).isOdd()).toBeFalsy()
     })
 
   })
