@@ -7,6 +7,18 @@ describe("rint", function() {
     expect(rint(7).toInt()).toEqual(7)
   })
 
+  it("accepts an instance of rint as the value", function() {
+    expect(rint(rint(3)).toInt()).toEqual(3);
+  })
+
+  it("accepts any argument we can find the value of", function() {
+    var valuable = {
+      valueOf: function() { return 42 }
+    }
+
+    expect(rint(valuable).toInt()).toEqual(42)
+  })
+
   it("throws a TypeError if the value is not an integer", function() {
     var e = new TypeError("given value is not an integer")
 
