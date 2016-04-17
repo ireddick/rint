@@ -70,7 +70,7 @@ describe("RInt", function() {
       expect(values).toEqual([0, 1, 2])
     })
 
-    it("curries when no function is given", function() {
+    it("partially applies when no function is given", function() {
       var values = []
       rint(3).times()(function(n) { values.push(n) })
 
@@ -115,7 +115,7 @@ describe("RInt", function() {
       expect(fn).not.toHaveBeenCalled()
     })
 
-    it("curries when no function is given", function() {
+    it("partially applies when no function is given", function() {
       var values = []
       rint(2).upTo(5)(function(n) { values.push(n) })
 
@@ -140,7 +140,7 @@ describe("RInt", function() {
       expect(fn).not.toHaveBeenCalled()
     })
 
-    it("curries when no function is given", function() {
+    it("partially applies when no function is given", function() {
       var values = []
       rint(5).downTo(2)(function(n) { values.push(n) })
 
